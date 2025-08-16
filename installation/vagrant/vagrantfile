@@ -1,0 +1,43 @@
+# Vagrantfile - 3 VMs reliées sur un réseau privé "labnet"
+Vagrant.configure("2") do |config|
+    config.vm.box = "ubuntu/jammy64"  # Ubuntu 22.04
+  
+    # Réseau de lab (host-only / private_network)
+    # NAT (carte 1) reste pour l'accès Internet/apt/SSH vagrant.
+    LABNET_NET = "10.10.10"
+    LABNET_MASK = "255.255.255.0"
+  
+    # --- VM 1 ---
+    config.vm.define "vm1" do |vm|
+      vm.vm.hostname = "vm1"
+      vm.vm.network :private_network, ip: "#{LABNET_NET}.11", netmask: LABNET_MASK
+      vm.vm.provider "virtualbox" do |vb|
+        vb.name = "lab-vm1"
+        vb.memory = 512
+        vb.cpus = 1
+      end
+    end
+  
+    # --- VM 2 ---
+    config.vm.define "vm2" do |vm|
+      vm.vm.hostname = "vm2"
+      vm.vm.network :private_network, ip: "#{LABNET_NET}.12", netmask: LABNET_MASK
+      vm.vm.provider "virtualbox" do |vb|
+        vb.name = "lab-vm2"
+        vb.memory = 512
+        vb.cpus = 1
+      end
+    end
+  
+    # --- VM 3 ---
+    config.vm.define "vm3" do |vm|
+      vm.vm.hostname = "vm3"
+      vm.vm.network :private_network, ip: "#{LABNET_NET}.13", netmask: LABNET_MASK
+      vm.vm.provider "virtualbox" do |vb|
+        vb.name = "lab-vm3"
+        vb.memory = 512
+        vb.cpus = 1
+      end
+    end
+  end
+  
