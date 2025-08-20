@@ -286,3 +286,4 @@ sudo tcpdump -i enp0s8 -n 'udp port 5000'
 ---
 
 Si tu veux, je te fournis un **énoncé TP “clé en main”** (PDF/markdown) avec : objectifs, pas-à-pas, captures attendues, et grille de correction.
+
