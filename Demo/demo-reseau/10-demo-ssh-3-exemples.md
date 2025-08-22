@@ -85,14 +85,12 @@ sudo passwd vagrant
 
 ```bash
 sudo nano /etc/ssh/sshd_config
-```
-
-Modifie/ajoute :
-
-```
 PasswordAuthentication yes
 PubkeyAuthentication no
+sudo cat /etc/ssh/sshd_config.d/*.conf
+PasswordAuthentication no
 ```
+---
 
 Puis redémarre SSH :
 
